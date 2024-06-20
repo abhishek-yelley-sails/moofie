@@ -1,0 +1,40 @@
+.movie-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.movie-card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-poster {
+    width: 100%;
+    height: auto;
+}
+
+.movie-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.movie-name {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.movie-year {
+    color: #777;
+    margin: 5px 0 0;
+}
