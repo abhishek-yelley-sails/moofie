@@ -5,11 +5,11 @@ import './MovieCard.css';
 export default function MovieCard({ name, year, id, posterImage }) {
     const navigate = useNavigate();
     return (
-        <div className="movie-card" onClick={() => navigate(`/movie/${id}`)}>
-            <img src={posterImage} alt={`${name} poster`} className="movie-poster" />
-            <div className="movie-info">
-                <h3 className="movie-name">{name}</h3>
-                <p className="movie-year">{year}</p>
+        <div className="MovieCard" onClick={() => navigate(`/movie/${id}`)}>
+            <img src={posterImage} alt={`${name} poster`} className="MoviePoster" />
+            <div className="MovieInfo">
+                <h3 className="MovieName">{name}</h3>
+                <p className="MovieYear">{year}</p>
             </div>
         </div>
     );

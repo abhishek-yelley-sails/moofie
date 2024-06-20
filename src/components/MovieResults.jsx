@@ -1,42 +1,43 @@
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useLoaderData, Await } from 'react-router-dom';
+import { Suspense } from 'react';
 import MovieCard from './MovieCard';
 
 const posterPrefix = "https://image.tmdb.org/t/p/original/";
 
-export default function MovieResults({ query }) {
-    const [result, setResult] = useState([]);
-
-    useEffect(() => {
-        const url = `https://api.theoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`
-            }
-        };
-
-        fetch(url, options)
-            .then(res => res.json())
-            .then(json => setResult(json.results))
-            .catch(err => {
-                console.error('error:' + err)
-                throw err;
-            });
-
-    }, [query]);
-
+export default function MovieResults() {
+    // const response = useLoaderData();
+    const {fetchUrl, options} = useLoaderData();
     return (
-        <>
-            {result.map(
-                (item) =>
-                <MovieCard key={item.id} id={item.id} name={item.title} posterImage={posterPrefix + item.poster_path} />
-            )}
-        </>
+        <div className='MovieResults'>
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <Await
+                    resolve={
+                        new Promise((resolve, reject) => {
+                            fetch(fetchUrl, options)
+                                .then(res => res.json())
+                                .then(res => {console.log(res); return resolve(res)})
+                                .catch(err => reject(err));
+                        })
+                    }
+                    errorElement={
+                        <div>Could not load movies 😬</div>
+                    }
+                >
+                    {(data) => {
+                        if (!data || !data.results || data.results.length === 0) {
+                            return <h1>No results</h1>
+                        }
+                        return data.results.map((item) =>
+                            <MovieCard
+                                key={item.id}
+                                id={item.id}
+                                name={item.title}
+                                posterImage={posterPrefix + item.poster_path}
+                            />
+                        )
+                    }}
+                </Await>
+            </Suspense>
+        </div>
     );
-}
-
-MovieResults.propTypes = {
-    query: PropTypes.string
 }

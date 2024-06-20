@@ -22,6 +22,8 @@ a.nav {
   border-radius: 8px;
   padding-left: 10px;
   padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin: 5px;
   background: inherit;
 }
@@ -36,9 +38,15 @@ a.nav.active {
   color: black;
 }
 
-a.nav.pendig {
-  background: yellow;
+a.nav.pending {
+  background: rgb(62, 60, 62);
 }
+
+a.nav.pending:hover {
+  cursor: wait;
+  border: 1px solid rgba(255, 239, 12, 0);
+}
+
 
 ul.nav {
   margin: 0;
@@ -60,23 +68,42 @@ ul.nav {
 }
 .TextInputField {
   background-color: rgb(38, 48, 66);
-  border: 2px rgb(84, 102, 124) solid;
-  border-radius: 8px;
+  /* border-top: 2px #1a1a1a solid;
+  border-left: 2px #1a1a1a solid;
+  border-bottom: 2px #1a1a1a solid; 
+  border-right: none; */
+  border:2px #1a1a1a solid;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   padding: 10px;
   color: white;
   font-weight: 500;
   font-size: medium;
   color-scheme: dark;
-  width: 80%;
+  transition: border-color 0.25s;
 }
 .TextInputField:focus {
   border: 2px black solid;
 }
+.TextInputField:hover {
+  border-color: #646cff;
+}
+.TextInputField::placeholder {
+  color: #6c7e80;
+}
+
 .TextLabel {
   width: max-content;
   padding: 5px;
   font-weight: 500;
   font-size: medium;
+}
+
+.MovieResults {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 body {
@@ -89,8 +116,9 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;

@@ -16,6 +16,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <SearchBox />,
+        loader: movieResultsFetchData,
         errorElement: <h1>Something went wrong!</h1>,
       },
       {
