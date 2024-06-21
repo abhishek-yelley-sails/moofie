@@ -5,20 +5,13 @@ import MovieCard from './MovieCard';
 const posterPrefix = "https://image.tmdb.org/t/p/original/";
 
 export default function MovieResults() {
-    // const response = useLoaderData();
-    const {fetchUrl, options} = useLoaderData();
+    const response = useLoaderData();
+    // const {fetchUrl, options} = useLoaderData();
     return (
         <div className='MovieResults'>
             <Suspense fallback={<h1>Loading...</h1>}>
                 <Await
-                    resolve={
-                        new Promise((resolve, reject) => {
-                            fetch(fetchUrl, options)
-                                .then(res => res.json())
-                                .then(res => {console.log(res); return resolve(res)})
-                                .catch(err => reject(err));
-                        })
-                    }
+                    resolve={response}
                     errorElement={
                         <div>Could not load movies 😬</div>
                     }

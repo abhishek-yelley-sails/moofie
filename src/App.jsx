@@ -1,4 +1,5 @@
-import SearchBox from './components/SearchBox.jsx';
+// import SearchBox from './components/SearchBox.jsx';
+import Home from './pages/Home.jsx';
 import RootLayout from './pages/RootLayout.jsx';
 import About from './pages/About.jsx';
 import movieResultsFetchData from './loader/movieResultsFetchData.js';
@@ -14,8 +15,8 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        index: true,
-        element: <SearchBox />,
+        index: "/",
+        element: <Home />,
         loader: movieResultsFetchData,
         errorElement: <h1>Something went wrong!</h1>,
       },
