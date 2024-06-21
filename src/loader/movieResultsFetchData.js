@@ -1,5 +1,3 @@
-// import axios from 'axios';
-
 export default function movieResultsFetchData({ request }) {
     const url = new URL(request.url);
     const query = url.searchParams.get("query");
@@ -13,22 +11,10 @@ export default function movieResultsFetchData({ request }) {
         }
     };
     try {
-        if (query) {
-            // const response = axios(fetchUrl, options);
-            // return response; // return a promise on purpose for <Await /> in MovieResults.jsx 
-
-            // use defer from react-router-dom
-            return new Promise((resolve, reject) => {
-                fetch(fetchUrl, options)
-                    .then(res => res.json())
-                    .then(res => { console.log(res); return resolve(res) })
-                    .catch(err => reject(err));
+        if (query !== '' && query !== null && query !== undefined) {
+            return ({
+                data: fetch(fetchUrl, options).then((res) => res.json()),
             });
-
-
-            // return new Promise((resolve) => {
-            //     setTimeout(async () => resolve(await response.json()), 2000);
-            // });
         }
     } catch (err) {
         console.err("error:" + err);
