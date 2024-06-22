@@ -84,7 +84,7 @@ ul.nav {
   font-size: medium;
   color-scheme: dark;
   transition: border-color 0.25s;
-  box-shadow: 10px 10px 50px #000000;
+  /* box-shadow: 10px 10px 50px #000000; */
 }
 
 .TextInputField:focus {
@@ -313,7 +313,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-  box-shadow: 10px 10px 50px #000000;
+  /* box-shadow: 10px 10px 50px #000000; */
 }
 
 .SearchBtn {
