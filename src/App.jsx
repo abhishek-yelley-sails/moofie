@@ -2,7 +2,9 @@
 import Home from './pages/Home.jsx';
 import RootLayout from './pages/RootLayout.jsx';
 import About from './pages/About.jsx';
-import movieResultsFetchData from './loader/movieResultsFetchData.js';
+import Movie from './pages/Movie.jsx';
+import searchResultsLoader from './loader/searchResultsLoader.js';
+import movieLoader from './loader/movieLoader.jsx';
 
 import {
   createBrowserRouter,
@@ -17,12 +19,18 @@ const router = createBrowserRouter([
       {
         index: "/",
         element: <Home />,
-        loader: movieResultsFetchData,
-        errorElement: <h1>Something went wrong!</h1>,
+        loader: searchResultsLoader,
+        errorElement: <h1>Error! Can{"'"}t load the results</h1>,
       },
       {
         path: "about",
         element: <About />
+      },
+      {
+        path: "movie/:id",
+        element: <Movie />,
+        loader: movieLoader,
+        errorElement: <h1>Error! Can{"'"}t load the Movie</h1>,
       }
     ],
     errorElement: <h1>Error 404! Not found!</h1>

@@ -1,0 +1,29 @@
+.ShimmerBG {
+    animation-duration: 12s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #242424;
+    background: linear-gradient(to right, #262626 8%, #424242 18%, #242424 33%);
+}
+
+@-webkit-keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+
+    100% {
+        background-position: 1200px 0;
+    }
+}

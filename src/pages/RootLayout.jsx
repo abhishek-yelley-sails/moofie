@@ -9,13 +9,10 @@ export default function RootLayout() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                padding: "50px"
             }}>
                 <div style={{
                     display: "flex",
-                    flexDirection: "row",
                     justifyContent: "center",
-                    padding: "50px",
                 }}>
                     <Outlet />
                 </div>

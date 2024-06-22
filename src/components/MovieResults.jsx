@@ -1,6 +1,8 @@
 import { useLoaderData, Await } from 'react-router-dom';
 import { Suspense } from 'react';
 import MovieCard from './MovieCard';
+import MovieResultsLoading from './MovieResultsLoading';
+import posterNotFound from '../assets/posterNotFound.webp';
 
 const posterPrefix = "https://image.tmdb.org/t/p/original/";
 
@@ -8,8 +10,8 @@ export default function MovieResults() {
     const { data } = useLoaderData();
 
     return (
-        <div className='MovieResults'>
-            <Suspense fallback={<h1>Loading...</h1>}>
+        <div className='MovieResults Center'>
+            <Suspense fallback={<MovieResultsLoading results={20} />}>
                 <Await
                     /*
                     resolve={new Promise((res) => {
@@ -30,7 +32,8 @@ export default function MovieResults() {
                                 key={item.id}
                                 id={item.id}
                                 name={item.title}
-                                posterImage={posterPrefix + item.poster_path}
+                                posterImage={item.poster_path ? posterPrefix + item.poster_path : posterNotFound}
+                                year={item.release_date ? item.release_date.split('-')[0] : "unknown"}
                             />
                         )
                     }}

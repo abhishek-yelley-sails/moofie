@@ -26,6 +26,7 @@ a.nav {
   padding-bottom: 5px;
   margin: 5px;
   background: inherit;
+  transition: all 0.25s;
 }
 
 a.nav:hover {
@@ -57,22 +58,24 @@ ul.nav {
   padding: 10px;
 }
 
-.SearchBox {
+.Home {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50vw;
 }
+
 .SearchField {
+  margin-top: 50px;
   padding: 5px;
 }
+
 .TextInputField {
   background-color: rgb(38, 48, 66);
   /* border-top: 2px #1a1a1a solid;
   border-left: 2px #1a1a1a solid;
   border-bottom: 2px #1a1a1a solid; 
   border-right: none; */
-  border:2px #1a1a1a solid;
+  border: 2px #1a1a1a solid;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   padding: 10px;
@@ -81,13 +84,17 @@ ul.nav {
   font-size: medium;
   color-scheme: dark;
   transition: border-color 0.25s;
+  box-shadow: 10px 10px 50px #000000;
 }
+
 .TextInputField:focus {
   border: 2px black solid;
 }
+
 .TextInputField:hover {
   border-color: #646cff;
 }
+
 .TextInputField::placeholder {
   color: #6c7e80;
 }
@@ -104,6 +111,187 @@ ul.nav {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 50px;
+}
+
+.MovieContainer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 50px;
+}
+
+.MovieBackdrop {
+  position: absolute;
+  height: 80vh;
+  width: 100vw;
+  z-index: 0;
+  opacity: 0.3;
+  box-shadow: inset -100px -100px 100px 50px #242424;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.MovieDetails {
+  padding: 20px;
+  width: 100%;
+}
+
+.MovieTitleBar {
+  display: flex;
+  padding: 0px;
+  margin: 0px;
+}
+
+.MovieHeading {
+  margin: 0px;
+  padding: 0px;
+}
+
+.MovieHeading::after {
+  content: "\00a0\00a0";
+  font-size: 87.5%;
+}
+
+.MovieYear {
+  margin: 0px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  font-size: large;
+  /* text-decoration: 0.05em underline; */
+  color: #777;
+  font-style: italic;
+}
+
+.MovieTagline {
+  font-size: x-large;
+  color: #b1b1b1;
+}
+
+.MovieTagline>p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.MovieRatingContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 10vw;
+  margin-top: 18.720px;
+}
+
+.MovieRatingValue {
+  font-weight: 600;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 8px;
+}
+
+.GREEN {
+  color: #6ed762;
+  border: 2px solid #6ed762;
+}
+
+.YELLOW {
+  color: #e7e55b;
+  border: 2px solid #e7e55b;
+}
+
+.RED {
+  color: #ef4949;
+  border: 2px solid #ef4949;
+}
+
+.MovieOverviewContainer {
+  width: 50%;
+}
+
+.MovieOverview {
+  line-height: 1.2em;
+  font-size: larger;
+}
+
+.MoviePosterImage {
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+  box-shadow: 10px 10px 50px #000000;
+  border-radius: 8px;
+  transition: all 0.2s linear;
+}
+
+.MoviePosterImage:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.MovieGenresContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.MovieGenre {
+  background: rgb(216, 203, 103);
+  color: black;
+  font-weight: 700;
+  font-size: small;
+  height: max-content;
+  width: max-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0;
+}
+
+.MovieLeft {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  margin: 50px;
+  margin-top: 0px;
+}
+
+.ImageModal {
+  background-color: #292828;
+  border: none;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.ImageModal img {
+  align-self: center;
+  height: 750px;
+  width: 500px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.ImageModal::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.ImageModal[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: slide-in-from-top 0.35s ease-out;
+}
+
+@keyframes slide-in-from-top {
+  0% {
+    transform: translateY(-15%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 body {
@@ -116,8 +304,7 @@ h1 {
 }
 
 button {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius: 8px;
   border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -126,6 +313,13 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  box-shadow: 10px 10px 50px #000000;
+}
+
+.SearchBtn {
+  border-radius: 0px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 button:hover {
@@ -150,4 +344,86 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+
+  .MoviePosterImage,
+  .TextInputField,
+  button {
+    box-shadow: 10px 10px 50px #213547;
+  }
+
+  .MovieBackdrop {
+    box-shadow: inset -100px -100px 100px 50px #ffffff;
+  }
+}
+
+@media (max-width: 1200px) {
+  .MovieOverviewContainer {
+    width: 100%;
+  }
+}
+
+@media (width <=700px) {
+  h1 {
+    font-size: x-large;
+  }
+
+  .MoviePosterImage {
+    width: 200px;
+    height: 300px;
+  }
+
+  .MovieContainer {
+    flex-wrap: wrap;
+  }
+
+  .MovieLeft {
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .MovieTitleBar {
+    width: 100%;
+  }
+
+  .MovieTagline {
+    font-size: medium;
+  }
+
+  .MovieDetails {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .MovieRatingContainer {
+    width: 30vw;
+  }
+
+  .MovieGenresContainer {
+    margin-top: 0px;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+
+  .Center {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .MovieOverview {
+    font-size: medium;
+  }
+
+  .ImageModal img {
+    height: 450px;
+    width: 300px;
+  }
+
+  /* .MovieBackdrop {
+    box-shadow: inset 0 0 50px 50px #1c1c1c ;
+  } */
 }

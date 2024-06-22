@@ -2,13 +2,17 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function SearchField() {
-
     const [inputField, setInputField] = useState('');
     const navigate = useNavigate();
 
     function handleInputChange(e) {
         setInputField(e.target.value);
-        navigate(`/?query=${e.target.value}`);
+        // navigate(`/?query=${e.target.value}`);
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        navigate(`/?query=${inputField}`);
     }
 
     return (
@@ -25,7 +29,7 @@ export default function SearchField() {
                     Search Field
                 </label>
             </div>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleSubmit}>
                 <div style={{
                     display: "flex",
                     justifyContent: "center",
@@ -40,7 +44,7 @@ export default function SearchField() {
                         value={inputField}
                         onChange={handleInputChange}
                     />
-                    <button type="submit">Submit</button>
+                    <button className="SearchBtn" type="submit">Submit</button>
                 </div>
             </form>
         </div>

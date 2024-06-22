@@ -1,0 +1,120 @@
+.MovieCard {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: max-content;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    margin: 10px;
+    background-color: #162122;
+}
+
+.MovieCardLoading {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: max-content;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    margin: 10px;
+    background-color: #162122;
+}
+
+.MovieCard:hover {
+    transform: scale(1.05);
+}
+
+.MoviePoster {
+    width: 100%;
+    height: auto;
+}
+.MoviePosterContainer {
+    width: 200px;
+    height: 300px;
+}
+
+.MoviePosterLoading {
+    width: 200px;
+    height: 300px;
+}
+
+.MovieInfo {
+    padding: 10px;
+    text-align: center;
+}
+
+.MovieName {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.MovieNameLoading {
+    width: 150px;
+    height: 20px;
+    border-radius: 8px;
+    margin: 3px;
+}
+
+.MovieYear {
+    color: #777;
+    margin: 5px 0 0;
+}
+.MovieYearLoading {
+    width: 40px;
+    height: 10px;
+    border-radius: 8px;
+    margin: 3px;
+}
+
+@media (width <=700px) {
+    .MovieCard {
+        width: 100px;
+        margin: 3px;
+    }
+    
+    .MovieCard:hover {
+        transform: scale(1);
+    }
+
+    .MovieInfo {
+        padding: 0px;
+        padding-top: 8px;
+    }
+
+    .MovieName {
+        font-size: 1em;
+        line-height: 1.2em;
+    }
+
+    .MovieYear {
+        margin: 0px;
+    }
+
+    .MovieCardLoading {
+        width: 100px;
+        margin: 3px;
+    }
+    .MovieYearLoading {
+        margin-bottom: 10px;
+    }
+    .MoviePosterLoading {
+        width: 100px;
+        height: 150px;
+    }
+    .MovieNameLoading {
+        width: 80px;
+        height: 10px;
+    }
+    .MoviePosterContainer {
+        width: 100px;
+        height: 150px;
+    }
+}

@@ -1,8 +1,8 @@
-export default function movieResultsFetchData({ request }) {
-    const url = new URL(request.url);
-    const query = url.searchParams.get("query");
 
-    const fetchUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+
+export default function movieLoader({ params }) {
+    const { id } = params;
+    const fetchUrl = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
     const options = {
         method: 'GET',
         headers: {
@@ -11,7 +11,7 @@ export default function movieResultsFetchData({ request }) {
         }
     };
     try {
-        if (query !== '' && query !== null && query !== undefined) {
+        if (id !== '' && id !== null && id !== undefined) {
             return ({
                 data: fetch(fetchUrl, options).then((res) => res.json()),
             });

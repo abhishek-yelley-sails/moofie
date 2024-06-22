@@ -1,17 +1,20 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './MovieCard.css';
+import cssClasses from './MovieCard.module.css';
 
 export default function MovieCard({ name, year, id, posterImage }) {
-    const navigate = useNavigate();
     return (
-        <div className="MovieCard" onClick={() => navigate(`/movie/${id}`)}>
-            <img src={posterImage} alt={`${name} poster`} className="MoviePoster" />
-            <div className="MovieInfo">
-                <h3 className="MovieName">{name}</h3>
-                <p className="MovieYear">{year}</p>
+        <Link to={`/movie/${id}`} style={{textDecoration: "none", color: "inherit"}}>
+        <div className={cssClasses.MovieCard}>
+            <div className={cssClasses.MoviePosterContainer}>
+                <img src={posterImage} alt={`${name} poster`} className={cssClasses.MoviePoster} />
+            </div>
+            <div className={cssClasses.MovieInfo}>
+                <h3 className={cssClasses.MovieName}>{name}</h3>
+                <p className={cssClasses.MovieYear}>{year}</p>
             </div>
         </div>
+        </Link>
     );
 }
 
