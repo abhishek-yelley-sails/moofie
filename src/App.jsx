@@ -45,12 +45,12 @@ const router = createBrowserRouter([
         element: <About />
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
         errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
       },
       {
-        path: "/signup",
+        path: "signup",
         element: <Signup />,
         action: signupAction,
         errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,

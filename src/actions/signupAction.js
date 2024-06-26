@@ -22,5 +22,5 @@ export default async function signupAction({ request }) {
     if (Object.keys(errors).length) {
         return errors;
     }
-    return redirect("/");
+    return redirect("/login");
 }
