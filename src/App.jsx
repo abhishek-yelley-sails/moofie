@@ -1,45 +1,69 @@
-// import SearchBox from './components/SearchBox.jsx';
-import Home from './pages/Home.jsx';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import RootLayout from './pages/RootLayout.jsx';
+import Authenticate from './pages/Authenticate.jsx';
+
+import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Movie from './pages/Movie.jsx';
-import searchResultsLoader from './loader/searchResultsLoader.js';
-import movieLoader from './loader/movieLoader.jsx';
+import Signup from './pages/Signup.jsx';
+import Login from './pages/Login.jsx';
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import searchResultsLoader from './loaders/searchResultsLoader.js';
+import movieLoader from './loaders/movieLoader.js';
+import signupAction from './actions/signupAction.js';
+
+import UserContextProvider from './components/UserContextProvider.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <h1>Error 404! Not found!</h1>,
     children: [
       {
         index: "/",
-        element: <Home />,
-        loader: searchResultsLoader,
-        errorElement: <h1>Error! Can{"'"}t load the results</h1>,
+        element: <Authenticate />,
+        errorElement: <h1>Error! Can{"'"}t authenticate</h1>,
+        children: [
+          {
+            index: "/",
+            element: <Home />,
+            loader: searchResultsLoader,
+            errorElement: <h1>Error! Can{"'"}t load the results</h1>,
+          },
+          {
+            path: "movie/:id",
+            element: <Movie />,
+            loader: movieLoader,
+            errorElement: <h1>Error! Can{"'"}t load the Movie</h1>,
+          }
+        ]
       },
       {
         path: "about",
         element: <About />
       },
       {
-        path: "movie/:id",
-        element: <Movie />,
-        loader: movieLoader,
-        errorElement: <h1>Error! Can{"'"}t load the Movie</h1>,
+        path: "/login",
+        element: <Login />,
+        errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+        action: signupAction,
+        errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
       }
     ],
-    errorElement: <h1>Error 404! Not found!</h1>
   },
 ]);
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <UserContextProvider>
+      <RouterProvider router={router} />
+    </UserContextProvider>
   );
 }
 export default App

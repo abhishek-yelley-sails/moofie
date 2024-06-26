@@ -8,7 +8,11 @@ const posterPrefix = "https://image.tmdb.org/t/p/original/";
 
 export default function MovieResults() {
     const { data } = useLoaderData();
-
+    if (!data) {
+        return (
+            <h1>This should not happen</h1>
+        );
+    }
     return (
         <div className='MovieResults Center'>
             <Suspense fallback={<MovieResultsLoading results={20} />}>

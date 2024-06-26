@@ -1,5 +1,3 @@
-
-
 export default function movieLoader({ params }) {
     const { id } = params;
     const fetchUrl = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;

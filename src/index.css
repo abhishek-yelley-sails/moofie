@@ -1,6 +1,5 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 2;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -13,7 +12,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a.nav {
+header a {
+  display: block;
+}
+
+a.nav-ul {
   font-weight: 500;
   font-size: larger;
   text-decoration: none;
@@ -29,36 +32,75 @@ a.nav {
   transition: all 0.25s;
 }
 
-a.nav:hover {
+a.nav-ul:hover {
   border: 1px solid rgba(255, 239, 12, 1);
 }
 
-a.nav.active {
+a.nav-ul.active {
   background: rgb(255, 239, 12);
   border: 1px solid rgb(255, 239, 12);
   color: black;
 }
 
-a.nav.pending {
+a.nav-ul.pending {
   background: rgb(62, 60, 62);
 }
 
-a.nav.pending:hover {
+a.nav-ul.pending:hover {
   cursor: wait;
   border: 1px solid rgba(255, 239, 12, 0);
 }
 
-
-ul.nav {
-  margin: 0;
+ul.nav-ul {
   display: flex;
-  flex-wrap: wrap;
   list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+li.nav-ul {
+  padding: 0px;
+  margin: 0px;
+  height: min-content;
+}
+
+a.nav-img {
+  line-height: 0%;
+  text-decoration: none;
+  border: 1px solid rgba(255, 239, 12, 0);
+  border-radius: 50%;
+  padding: 3px 3px 3px 3px;
+  margin: 0 5px 0 5px;
+  background: inherit;
+  transition: all 0.25s;
+}
+
+a.nav-img:hover {
+  border: 1px solid rgba(255, 239, 12, 1);
+}
+
+a.nav-img.active {
+  background: rgb(255, 239, 12);
+  border: 1px solid rgb(255, 239, 12);
+  color: black;
+}
+
+a.nav-img.pending {
+  background: rgb(62, 60, 62);
+}
+
+a.nav-img.pending:hover {
+  cursor: wait;
+  border: 1px solid rgba(255, 239, 12, 0);
+}
+
+nav {
+  margin: 0;
   background: rgb(41, 61, 69);
-  padding: 10px;
 }
 
 .Home {
+  line-height: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,6 +149,7 @@ ul.nav {
 }
 
 .MovieResults {
+  line-height: 2;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -115,6 +158,7 @@ ul.nav {
 }
 
 .MovieContainer {
+  line-height: 2;
   display: flex;
   flex-direction: row;
   padding-top: 50px;
@@ -282,6 +326,19 @@ ul.nav {
   animation: slide-in-from-top 0.35s ease-out;
 }
 
+.LoginFormContainer {
+  background-color: #ecd18d;
+  padding: 50px;
+  border-radius: 8px;
+}
+.LoginForm {
+  align-self: center;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 @keyframes slide-in-from-top {
   0% {
     transform: translateY(-15%);
@@ -330,7 +387,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+/*
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -355,7 +412,7 @@ button:focus-visible {
     box-shadow: inset -100px -100px 100px 50px #ffffff;
   }
 }
-
+*/
 @media (max-width: 1200px) {
   .MovieOverviewContainer {
     width: 100%;
