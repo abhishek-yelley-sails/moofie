@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Input, Button } from '@mui/material';
-import { Form, useActionData } from "react-router-dom";
+import { Link, Form, useActionData } from "react-router-dom";
 
 export default function Signup() {
     const errors = useActionData();
@@ -32,9 +32,11 @@ export default function Signup() {
                 {errors?.password ? <span style={{color: "red"}}>{errors.password}</span> : <br/>}
 
                 <br/>
-                <Button type="submit" variant="contained">Sign Up</Button>
+                <Button sx={{width: "max-content", alignSelf: "center"}} type="submit" variant="contained">Sign Up</Button>
+                <br />
                 {/* <button type="submit">Sign up</button> */}
             </Form>
+            <Link style={{color: "black", fontWeight: 500}} to="/login">Already have an account? Log In</Link>
         </div>
     );
 }
