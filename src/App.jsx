@@ -12,6 +12,7 @@ import Login from './pages/Login.jsx';
 import searchResultsLoader from './loaders/searchResultsLoader.js';
 import movieLoader from './loaders/movieLoader.js';
 import signupAction from './actions/signupAction.js';
+import loginAction from "./actions/loginAction.js";
 
 import UserContextProvider from './components/UserContextProvider.jsx';
 
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+        action: loginAction,
         errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
       },
       {

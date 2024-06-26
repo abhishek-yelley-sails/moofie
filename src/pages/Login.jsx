@@ -1,8 +1,9 @@
-import { Link, Form } from "react-router-dom";
+import { Link, Form, useActionData } from "react-router-dom";
 import { useState } from "react";
 import { Input, Button } from "@mui/material";
 
 export default function Login() {
+    const errors = useActionData();
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
@@ -21,10 +22,10 @@ export default function Login() {
             <Form method="post" style={{ color: "white" }} className="LoginForm">
 
                 <Input sx={{fontWeight: 600}} placeholder="Email" type="email" name="email" value={formValues.email} onChange={handleChange} />
-                <br/>
+                {errors?.email ? <span style={{color: "red"}}>{errors.email}</span> : <br/>}
 
                 <Input sx={{fontWeight: 600}} placeholder="Password" type="password" name="password" value={formValues.password} onChange={handleChange} />
-                <br/>
+                {errors?.password ? <span style={{color: "red"}}>{errors.password}</span> : <br/>}
 
                 <br/>
                 <Button sx={{width: "max-content", alignSelf: "center"}} type="submit" variant="contained">Log In</Button>
