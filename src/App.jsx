@@ -13,6 +13,7 @@ import Login from './pages/Login.jsx';
 import searchResultsLoader from './loaders/searchResultsLoader.js';
 import movieLoader from './loaders/movieLoader.js';
 import loginLoader from "./loaders/loginLoader.js";
+import logoutLoader from "./loaders/logoutLoader.js";
 import signupAction from './actions/signupAction.js';
 import loginAction from "./actions/loginAction.js";
 
@@ -62,6 +63,10 @@ function buildRouter(ctxValue) {
         element: <Signup />,
         action: (actionParams) => signupAction(actionParams, ctxValue),
         errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
+      },
+      {
+        path: "logout",
+        loader: (loaderParams) => logoutLoader(loaderParams, ctxValue),
       }
     ],
   },
