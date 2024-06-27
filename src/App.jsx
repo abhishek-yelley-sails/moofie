@@ -20,54 +20,53 @@ import { UserContext } from "./components/UserContextProvider.jsx";
 
 
 function buildRouter(ctxValue) {
+  return (
+  createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <h1>Error 404! Not found!</h1>,
+    children: [
+      {
+        index: "/",
+        element: <Authenticate />,
+        errorElement: <h1>Error! Can{"'"}t authenticate</h1>,
+        children: [
+          {
+            index: "/",
+            element: <Home />,
+            loader: searchResultsLoader,
+            errorElement: <h1>Error! Can{"'"}t load the results</h1>,
+          },
+          {
+            path: "movie/:id",
+            element: <Movie />,
+            loader: movieLoader,
+            errorElement: <h1>Error! Can{"'"}t load the Movie</h1>,
+          }
+        ]
+      },
+      {
+        path: "about",
+        element: <About />
+      },
+      {
+        path: "login",
+        element: <Login />,
+        action: (actionParams) => loginAction(actionParams, ctxValue),
+        loader: (loaderParams) => loginLoader(loaderParams, ctxValue),
+        errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
+        action: (actionParams) => signupAction(actionParams, ctxValue),
+        errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
+      }
+    ],
+  },
+]))}
 
-
-  return createBrowserRouter([
-    {
-      path: "/",
-      element: <RootLayout />,
-      errorElement: <h1>Error 404! Not found!</h1>,
-      children: [
-        {
-          index: "/",
-          element: <Authenticate />,
-          errorElement: <h1>Error! Can{"'"}t authenticate</h1>,
-          children: [
-            {
-              index: "/",
-              element: <Home />,
-              loader: searchResultsLoader,
-              errorElement: <h1>Error! Can{"'"}t load the results</h1>,
-            },
-            {
-              path: "movie/:id",
-              element: <Movie />,
-              loader: movieLoader,
-              errorElement: <h1>Error! Can{"'"}t load the Movie</h1>,
-            }
-          ]
-        },
-        {
-          path: "about",
-          element: <About />
-        },
-        {
-          path: "login",
-          element: <Login />,
-          action: (actionParams) => loginAction(actionParams, ctxValue),
-          loader: (loaderParams) => loginLoader(loaderParams, ctxValue),
-          errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
-        },
-        {
-          path: "signup",
-          element: <Signup />,
-          action: (actionParams) => signupAction(actionParams, ctxValue),
-          errorElement: <h1>Error! Can{"'"}t load the Login Page</h1>,
-        }
-      ],
-    },
-  ]);
-}
 function App() {
   const ctxValue = useContext(UserContext);
   return (
