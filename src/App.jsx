@@ -18,6 +18,7 @@ import signupAction from './actions/signupAction.js';
 import loginAction from "./actions/loginAction.js";
 
 import { UserContext } from "./components/UserContextProvider.jsx";
+import Profile from "./pages/Profile.jsx";
 
 
 function buildRouter(ctxValue) {
@@ -44,6 +45,11 @@ function buildRouter(ctxValue) {
             element: <Movie />,
             loader: movieLoader,
             errorElement: <h1>Error! Can{"'"}t load the Movie</h1>,
+          },
+          {
+            path: "profile",
+            element: <Profile />,
+            errorElement: <h1>Error! Can{"'"}t load the Profile</h1>,
           }
         ]
       },
