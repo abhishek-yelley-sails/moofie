@@ -148,9 +148,12 @@ export default function MainNavigation() {
 
                         {ctxValue.isLoggedIn &&
                             <Box sx={{ flexGrow: 0 }}>
+                                <Tooltip title={ctxValue.email}>
+                                    <span style={{marginRight: "10px"}}>{ctxValue.name}</span>
+                                </Tooltip>
                                 <Tooltip title="Open settings">
                                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                        <Avatar alt="User" src="/defaultProfileImage.webp" />
+                                        <Avatar alt={ctxValue.name || "User"} src={ctxValue.image || "/broken-image.jpg"} />
                                     </IconButton>
                                 </Tooltip>
                                 <Menu

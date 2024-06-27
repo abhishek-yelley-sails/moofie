@@ -4,11 +4,21 @@ const saltRounds = 10;
 const salt = await bcrypt.genSalt(saltRounds);
 
 export async function hashPassword(userPassword) {
-    return await bcrypt.hash(userPassword, salt);
+    try {
+        return await bcrypt.hash(userPassword, salt);
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
 }
 
 export async function comparePassword(userInputPassword, storedHashedPassword) {
-    return await bcrypt.compare(userInputPassword, storedHashedPassword);
+    try {
+        return await bcrypt.compare(userInputPassword, storedHashedPassword);
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
 }
 
 export const TMDB_IMAGE_PREFIX = "https://image.tmdb.org/t/p/original";

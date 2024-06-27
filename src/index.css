@@ -349,6 +349,13 @@ nav a {
   flex-direction: column;
   justify-content: space-around;
 }
+.img-preview {
+  object-fit: cover;
+  width: 50vh;
+  height: 50vh;
+  border-radius: 8px;
+  align-self: center; 
+}
 
 @keyframes slide-in-from-top {
   0% {
@@ -431,6 +438,10 @@ button:focus-visible {
 }
 
 @media (width <=700px) {
+  .img-preview {
+    width: 70vw;
+    height: 70vw;
+  }
   h1 {
     font-size: x-large;
   }

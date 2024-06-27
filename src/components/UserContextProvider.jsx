@@ -10,16 +10,17 @@ export const UserContext = createContext({
     changeIsLoggedIn: () => { },
     image: "",
     changeImage: () => { },
-    storeLocal: () => { },
-    getLocal: () => { },
+    login: () => { },
+    logout: () => { },
 });
 
 export default function UserContextProvider({ children }) {
     console.log("context rendered");
-    const [name, setName] = useState("test");
-    const [email, setEmail] = useState("test");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [image, setImage] = useState("/defaultProfileImage.webp");
+
 
     function changeName(newName) {
         setName(newName);
@@ -33,6 +34,18 @@ export default function UserContextProvider({ children }) {
     function changeEmail(newEmail) {
         setEmail(newEmail);
     }
+    function login(newUser) {
+        changeName(newUser.name);
+        changeEmail(newUser.email);
+        changeIsLoggedIn(true);
+        changeImage(newUser.image);
+    }
+    function logout() {
+        changeName("");
+        changeEmail("");
+        changeIsLoggedIn(false);
+        changeImage("/defaultProfileImage.webp");
+    }
 
     const ctxValue = {
         name,
@@ -42,7 +55,9 @@ export default function UserContextProvider({ children }) {
         isLoggedIn,
         changeIsLoggedIn,
         image,
-        changeImage
+        changeImage,
+        login,
+        logout,
     };
 
     return (

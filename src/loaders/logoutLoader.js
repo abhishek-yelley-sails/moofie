@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 
 export default function logoutLoader(loaderParams, ctxValue) {
-    ctxValue.changeIsLoggedIn(false);
+    ctxValue.logout();
     return redirect('/');
 }
