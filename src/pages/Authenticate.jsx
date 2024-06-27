@@ -4,8 +4,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 export default function Authenticate() {
     const ctxValue = useContext(UserContext);
-    // auth disabled
-    if (true || ctxValue.isLoggedIn) {
+    if (ctxValue.isLoggedIn) {
         return (
             <Outlet />
         );

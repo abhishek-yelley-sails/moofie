@@ -1,4 +1,5 @@
 import { redirect } from "react-router-dom";
+import { hashPassword } from "../utils/util";
 
 export default async function signupAction({ request }, ctxValue) {
     const formData = await request.formData();
@@ -18,11 +19,31 @@ export default async function signupAction({ request }, ctxValue) {
         errors.password = "Password must be ≥ 8 characters";
     }
 
-    // return data if we have errors
+    const allUsers = JSON.parse(localStorage.getItem("users") || "[]");
+
+    if (allUsers.find((item) => item.email === email)) {
+        errors.email = "User with email already exists";
+    }
+
     if (Object.keys(errors).length) {
         return errors;
     }
+
+    // all checks passed so far
+    localStorage.setItem("users", JSON.stringify(
+        [
+            ...JSON.parse(localStorage.getItem("users") || "[]"),
+            {
+                name,
+                email,
+                hashedPassword: await hashPassword(password)
+            }
+        ]
+    ));
+
     ctxValue.changeName(name);
-    ctxValue.toggleLogin();
+    ctxValue.changeEmail(email);
+    ctxValue.changeIsLoggedIn(true);
+
     return redirect("/login");
 }
