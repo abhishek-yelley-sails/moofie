@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 
-export default async function signupAction({ request }) {
+export default async function signupAction({ request }, ctxValue) {
     const formData = await request.formData();
     const name = formData.get("name");
     const email = formData.get("email");
@@ -22,5 +22,7 @@ export default async function signupAction({ request }) {
     if (Object.keys(errors).length) {
         return errors;
     }
+    ctxValue.changeName(name);
+    ctxValue.toggleLogin();
     return redirect("/login");
 }

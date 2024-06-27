@@ -1,6 +1,10 @@
 import { redirect } from "react-router-dom";
 
-export default async function loginAction({ request }) {
+export default async function loginAction({ request }, ctxValue) {
+
+    if(ctxValue.isLoggedIn) {
+        return redirect('/');
+    }
     const formData = await request.formData();
     const email = formData.get("email");
     const password = formData.get("password");
