@@ -14,39 +14,41 @@
 
 header a {
   display: block;
+  border: 1px solid rgb(0, 0, 0, 0);
+  transition: all 0.1s linear;
 }
 
-a.nav-ul {
-  font-weight: 500;
-  font-size: larger;
-  text-decoration: none;
-  color: white;
-  border: 1px solid rgba(255, 239, 12, 0);
-  border-radius: 8px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin: 5px;
-  background: inherit;
-  transition: all 0.25s;
-}
-
-a.nav-ul:hover {
+a:hover {
   border: 1px solid rgba(255, 239, 12, 1);
 }
 
-a.nav-ul.active {
+a.active {
   background: rgb(255, 239, 12);
   border: 1px solid rgb(255, 239, 12);
   color: black;
 }
 
-a.nav-ul.pending {
+a.pending {
   background: rgb(62, 60, 62);
 }
 
-a.nav-ul.pending:hover {
+a.pending:hover {
+  cursor: wait;
+  border: 1px solid rgba(255, 239, 12, 0);
+}
+
+a.main-active {
+  background: radial-gradient(circle, rgba(206, 221, 222, 0.3) 0%, rgba(206, 221, 222, 0) 80%);
+  border: 1px solid rgb(0, 0, 0, 0);
+  color: white;
+}
+
+a.main-pending {
+  background: rgb(62, 60, 62);
+  border: 1px solid rgba(255, 239, 12, 0);
+}
+
+a.main-pending:hover {
   cursor: wait;
   border: 1px solid rgba(255, 239, 12, 0);
 }
@@ -96,7 +98,13 @@ a.nav-img.pending:hover {
 
 nav {
   margin: 0;
-  background: rgb(41, 61, 69);
+}
+nav a {
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 5px;
+  color: white;
+  border: 1px solid rgb(0, 0, 0, 0);
 }
 
 .Home {
