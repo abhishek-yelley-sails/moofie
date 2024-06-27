@@ -18,7 +18,7 @@ header a {
   transition: all 0.1s linear;
 }
 
-a:hover {
+header a:hover {
   border: 1px solid rgba(255, 239, 12, 1);
 }
 
