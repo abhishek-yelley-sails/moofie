@@ -78,8 +78,23 @@ function buildRouter(ctxValue) {
   },
 ]))}
 
+// import { useEffect } from "react";
+
 function App() {
   const ctxValue = useContext(UserContext);
+  /*
+  useEffect(() => {
+    Array.prototype.findAsync = async function (asyncCallback) {
+      const promises = this.map(asyncCallback);
+      const results = await Promise.all(promises);
+      const index = results.findIndex(result => result);
+      return this[index];
+    }
+    const lol = [1, 2, 3];
+    const result = lol.findAsync(async (item) => 2 === await new Promise((res) => setTimeout(() => res(item),3000)));
+    result.then(res => console.log(res))
+  }, [])
+  */
   return (
     <RouterProvider router={buildRouter(ctxValue)} />
   );
