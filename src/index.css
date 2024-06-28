@@ -16,6 +16,7 @@ header a {
   display: block;
   border: 1px solid rgb(0, 0, 0, 0);
   transition: all 0.1s linear;
+  color: white;
 }
 
 header a:hover {
@@ -49,49 +50,6 @@ a.main-pending {
 }
 
 a.main-pending:hover {
-  cursor: wait;
-  border: 1px solid rgba(255, 239, 12, 0);
-}
-
-ul.nav-ul {
-  display: flex;
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-li.nav-ul {
-  padding: 0px;
-  margin: 0px;
-  height: min-content;
-}
-
-a.nav-img {
-  line-height: 0%;
-  text-decoration: none;
-  border: 1px solid rgba(255, 239, 12, 0);
-  border-radius: 50%;
-  padding: 3px 3px 3px 3px;
-  margin: 0 5px 0 5px;
-  background: inherit;
-  transition: all 0.25s;
-}
-
-a.nav-img:hover {
-  border: 1px solid rgba(255, 239, 12, 1);
-}
-
-a.nav-img.active {
-  background: rgb(255, 239, 12);
-  border: 1px solid rgb(255, 239, 12);
-  color: black;
-}
-
-a.nav-img.pending {
-  background: rgb(62, 60, 62);
-}
-
-a.nav-img.pending:hover {
   cursor: wait;
   border: 1px solid rgba(255, 239, 12, 0);
 }
@@ -335,7 +293,7 @@ nav a {
 }
 
 .LoginFormContainer {
-  background-color: #ecd18d;
+  background-color: #3a1f3d;
   padding: 50px;
   border-radius: 8px;
   margin-top: 100px;

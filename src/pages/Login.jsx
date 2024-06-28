@@ -18,8 +18,8 @@ export default function Login() {
 
     return (
         <div className="LoginFormContainer">
-            <h1 style={{color: "black"}}>Log In</h1>
-            <Form method="post" style={{ color: "white" }} className="LoginForm">
+            <h1>Log In</h1>
+            <Form method="post" className="LoginForm">
 
                 <Input sx={{fontWeight: 600}} placeholder="Email" type="email" name="email" value={formValues.email} onChange={handleChange} />
                 {errors?.email ? <span style={{color: "red"}}>{errors.email}</span> : <br/>}
@@ -32,7 +32,7 @@ export default function Login() {
                 <br/>
                 {/* <button type="submit">Sign up</button> */}
             </Form>
-            <Link style={{color: "black", fontWeight: 500}} to="/signup">Do not have an account? Sign Up</Link>
+            <Link style={{color: "white", fontWeight: 500}} to="/signup">Do not have an account? Sign Up</Link>
         </div>
     );
 }

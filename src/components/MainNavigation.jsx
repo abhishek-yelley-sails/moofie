@@ -100,9 +100,9 @@ export default function MainNavigation() {
                                     <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center">
                                             <NavLink
-                                                style={{ textDecoration: "none", color: "black", padding: "5px" }}
+                                                style={{ textDecoration: "none", color: "white", padding: "5px" }}
                                                 to={page.link}
-                                                className={({ isActive, isPending }) => (isPending ? "pending" : isActive ? "active" : "")}
+                                                className={({ isActive, isPending }) => (isPending ? "" : isActive ? "" : "")}
                                             >
                                                 {page.name}
                                             </NavLink>
@@ -176,7 +176,7 @@ export default function MainNavigation() {
                                         <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
                                             <Typography textAlign="center">
                                                 <NavLink
-                                                    style={{ textDecoration: "none", color: "black", padding: "5px" }}
+                                                    style={{ textDecoration: "none", color: "white", padding: "5px" }}
                                                     to={setting.link}
                                                     className={({ isActive, isPending }) => (isPending ? "main-pending" : isActive ? "main-active" : "")}
                                                 >

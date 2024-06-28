@@ -19,7 +19,7 @@ export default function Signup() {
 
     return (
         <div className="LoginFormContainer">
-            <h1 style={{color: "black"}}>Sign Up</h1>
+            <h1>Sign Up</h1>
             <Form method="post" style={{ color: "white" }} className="LoginForm">
 
                 <Input sx={{fontWeight: 600}} placeholder="Name" type="text" name="name" value={formValues.name} onChange={handleChange} />
@@ -36,7 +36,7 @@ export default function Signup() {
                 <br />
                 {/* <button type="submit">Sign up</button> */}
             </Form>
-            <Link style={{color: "black", fontWeight: 500}} to="/login">Already have an account? Log In</Link>
+            <Link style={{color: "white", fontWeight: 500}} to="/login">Already have an account? Log In</Link>
         </div>
     );
 }
