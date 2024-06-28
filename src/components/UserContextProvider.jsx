@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import PropTypes from 'prop-types';
 
 export const UserContext = createContext({
@@ -21,7 +21,6 @@ export default function UserContextProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [image, setImage] = useState("/defaultProfileImage.webp");
 
-
     function changeName(newName) {
         setName(newName);
     }
@@ -34,18 +33,30 @@ export default function UserContextProvider({ children }) {
     function changeEmail(newEmail) {
         setEmail(newEmail);
     }
-    function login(newUser) {
+    const login = useCallback(function login(newUser) {
         changeName(newUser.name);
         changeEmail(newUser.email);
         changeIsLoggedIn(true);
         changeImage(newUser.image);
-    }
+        localStorage.setItem("currentUser", newUser.email);
+    }, []);
     function logout() {
         changeName("");
         changeEmail("");
         changeIsLoggedIn(false);
         changeImage("/defaultProfileImage.webp");
+        localStorage.removeItem("currentUser");
     }
+
+    useEffect(() => {
+        const curEmail = localStorage.getItem("currentUser");
+        if (curEmail) {
+            const curUser = JSON.parse(localStorage.getItem("users") || "[]").find((item) => curEmail === item.email);
+            if (curUser) {
+                login(curUser);
+            }
+        }
+    }, [login]);
 
     const ctxValue = {
         name,

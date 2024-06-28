@@ -47,7 +47,7 @@ export default function SearchField() {
                         value={inputField}
                         onChange={handleInputChange}
                     />
-                    <input name="page" value="1" hidden/>
+                    <input name="page" defaultValue="1" hidden/>
                     <button className="SearchBtn" type="submit">Submit</button>
                 </div>
             </Form>
