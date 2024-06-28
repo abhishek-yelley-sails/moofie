@@ -32,7 +32,7 @@ export default function SearchField() {
                     Search Field
                 </label>
             </div>
-            <Form method="get" action="/" >
+            <Form method="get" action="/search" >
                 <div style={{
                     display: "flex",
                     justifyContent: "center",

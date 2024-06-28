@@ -19,6 +19,7 @@ import loginAction from "./actions/loginAction.js";
 
 import { UserContext } from "./components/UserContextProvider.jsx";
 import Profile from "./pages/Profile.jsx";
+import Results from "./pages/Results.jsx";
 
 
 function buildRouter(ctxValue) {
@@ -30,15 +31,22 @@ function buildRouter(ctxValue) {
     errorElement: <h1>Error 404! Not found!</h1>,
     children: [
       {
-        index: "/",
+        path: "/",
         element: <Authenticate />,
         errorElement: <h1>Error! Can{"'"}t authenticate</h1>,
         children: [
           {
-            index: "/",
+            path: "/",
             element: <Home />,
-            loader: searchResultsLoader,
-            errorElement: <h1>Error! Can{"'"}t load the results</h1>,
+            errorElement: <h1>Error! Can{"'"}t load the home</h1>,
+            children: [
+              {
+                path: "search",
+                element: <Results />,
+                loader: searchResultsLoader,
+                errorElement: <h1>Error! Can{"'"}t load the results</h1>,
+              }
+            ],
           },
           {
             path: "movie/:id",
